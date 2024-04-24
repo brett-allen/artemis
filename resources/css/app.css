@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+div#app {
+    height: 100%;
+    width: 100%;
+    border: 2px orange solid;
+}
+
+.ticker-container {
+    @apply bg-base-100 absolute bottom-0 left-0 h-64 w-full overflow-hidden flex flex-row;
+}
+
+.ticker-list {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    /* Move the list off-screen initially */
+    animation: ticker 20s linear infinite;
+    /* Adjust duration as needed */
+}
+
+.ticker-list li {
+    display: inline-block;
+    padding: 0 10px;
+    /* Add spacing between items */
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}

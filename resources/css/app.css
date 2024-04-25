@@ -13,31 +13,61 @@ div#app {
     border: 2px orange solid;
 }
 
-.ticker-container {
-    @apply bg-base-100 absolute bottom-0 left-0 h-64 w-full overflow-hidden flex flex-row;
+.ticker {
+  overflow: hidden;
+  padding: 10px 0;
+  position: relative;
+  white-space: nowrap;
 }
 
-.ticker-list {
-    display: inline-block;
-    white-space: nowrap;
-    padding-left: 100%;
-    /* Move the list off-screen initially */
-    animation: ticker 20s linear infinite;
-    /* Adjust duration as needed */
+.ticker-tape {
+  display: inline-block;
+  animation: 35s ticker infinite linear;
 }
 
-.ticker-list li {
-    display: inline-block;
-    padding: 0 10px;
-    /* Add spacing between items */
+.ticker-tape span {
+  display: inline-block; /*tailwind changes img display to block */
+  height:150px;
+  width:300px;
+  margin: 0 40px;
 }
+
+.ticker-tape span > img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.ticker:hover .ticker-tape {
+  animation-play-state: paused;
+}
+
+.ticker:before,
+.ticker:after {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.ticker:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.ticker:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
 
 @keyframes ticker {
-    0% {
+    from {
         transform: translateX(0);
     }
 
-    100% {
+    to {
         transform: translateX(-100%);
     }
 }

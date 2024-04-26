@@ -26,13 +26,14 @@ div#app {
 }
 
 .ticker-tape span {
-  display: inline-block; /*tailwind changes img display to block */
+  display: inline-block; 
   height:150px;
   width:300px;
   margin: 0 40px;
 }
 
 .ticker-tape span > img {
+  height: 100%;
   height: 100%;
   object-fit: cover;
 }

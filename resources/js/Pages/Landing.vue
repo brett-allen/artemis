@@ -2,7 +2,7 @@
 import { Head, Link, router } from '@inertiajs/vue3';
 import SidebarLayout from '../Layouts/SidebarLayout.vue';
 
-import { Chart, ChartData, ChartOptions, registerables } from "chart.js";
+import { Chart, ChartData, ChartOptions, LineControllerChartOptions, ScriptableContext, registerables } from "chart.js";
 import { Line } from 'vue-chartjs'
 
 const props = defineProps<{
@@ -12,9 +12,6 @@ const props = defineProps<{
 console.log(props.users)
 
 Chart.register(...registerables)
-
-// gradient.addColorStop(0, 'rgba(224, 195, 155, 1)');
-// gradient.addColorStop(1, 'rgba(100, 100, 0,0)');
 
 const options = {
   responsive: true,
@@ -43,19 +40,49 @@ const options = {
   }
 }
 
-const chartData = {
+const sparkOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  interaction: {
+    intersect: false,
+  },
+  plugins: {
+    legend: {
+      display: false
+    },
+    tooltip: {
+      enabled: false
+    }
+  },
+  scales: {
+    x: {
+      display: false,
+      grid: {
+        display: false
+      }
+    },
+    y: {
+      display: false,
+      grid: {
+        display: false
+      }
+    }
+  }
+}
+const chartData: ChartData<"line"> = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
   datasets: [
     {
       label: "Dataset 1",
-      data: [2, 5, 4, 8, 10, 4, 7],
-      tension: 0.3,
-      orderWidth: 2,
+      data: [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)],
+      tension: 0.4,
+      pointRadius: 0,
+      pointHoverRadius: 0,
       borderColor: "teal",
-      // backgroundColor: "#46AFD9",
-      backgroundColor: (ctx: { chart: { ctx: any; }; } ) => {
+      borderWidth:1,
+      backgroundColor: (ctx: ScriptableContext<"line">) => {
         const canvas = ctx.chart.ctx;
-        const gradient = canvas.createLinearGradient(0, 0, 0, 360);
+        const gradient = canvas.createLinearGradient(0, 0, 0, ctx.chart.height);
 
         gradient.addColorStop(0, 'teal');
         // gradient.addColorStop(.5, 'white');
@@ -64,25 +91,10 @@ const chartData = {
         return gradient;
       },
       fill: true
-
     },
   ],
 };
 
-// const data = {
-//     labels: [],
-//     datasets: [
-//       {
-//         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-//         data: [2, 5, 4, 8, 10, 4, 7],
-//         tension: 0.3,
-//         pointRadius: 0,
-//         borderWidth: 2,
-//         borderColor: "#46AFD9",
-//         backgroundColor: "#46AFD9",
-//       }
-//     ]
-// }
 
 </script>
 
@@ -137,6 +149,16 @@ const chartData = {
             <div class="stat-desc text-base-300">&nbsp;</div>
           </div>
         </div>
+        <div class="stats shadow flex-1">
+          <div class="stat">
+            <div class="stat-figure text-error h-8 w-48">
+              <Line id="chart" :data="chartData" :options="sparkOptions"/>
+            </div>
+            <div class="stat-title">Food Wastage</div>
+            <div class="stat-value text-error">12</div>
+            <div class="stat-desc text-base-300">↘︎ 40 (kg/week)</div>
+          </div>
+        </div>
       </div>
 
       <div class="flex-1">
@@ -147,12 +169,14 @@ const chartData = {
 
       <div class="ticker absolute bottom-0">
         <div class="ticker-tape">
+          <span><img src="https://assets-au.soupedup.io/marketing_updates/18-.png?lu=1713846234" /></span>
           <span><img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" /></span>
           <span><img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" /></span>
           <span><img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg" /></span>
           <span><img src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" /></span>
         </div>
         <div class="ticker-tape">
+          <span><img src="https://assets-au.soupedup.io/marketing_updates/18-.png?lu=1713846234" /></span>
           <span><img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" /></span>
           <span><img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" /></span>
           <span><img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg" /></span>

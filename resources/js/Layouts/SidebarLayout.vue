@@ -19,13 +19,13 @@ const state = reactive({
     </button>
 
     <div class="flex-none gap-2">
-      <label class="input input-bordered flex items-center gap-2">
+      <label class="input input-bordered focus:outline-none flex items-center gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round"
             d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
         </svg>
-        <input type="text" class="grow " placeholder="Search" />
+        <input type="text" class="grow" placeholder="Search" />
       </label>
     </div>
     
@@ -40,26 +40,50 @@ const state = reactive({
 
     <nav class="flex flex-1 justify-center text-dark-grey py-4">
       <ul class="menu w-56 bg-base-100 rounded-box">
-        <li><a>Item 1</a></li>
+        <li><a>Catering</a></li>
         <li>
           <details open>
-            <summary>Parent</summary>
+            <summary>Budgets</summary>
             <ul>
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
+              <li><a>Alpha</a></li>
+              <li><a>Beta</a></li>
+              <li><a>Gamma</a></li>
+              <li><a>Delta</a></li>
               <li>
-                <details open>
-                  <summary>Parent</summary>
+                <details>
+                  <summary>Sub-Budgets</summary>
                   <ul>
-                    <li><a>Submenu 1</a></li>
-                    <li><a>Submenu 2</a></li>
+                    <li><a>Epsilon</a></li>
+                    <li><a>Zeta</a></li>
                   </ul>
                 </details>
               </li>
             </ul>
           </details>
         </li>
-        <li><a>Item 3</a></li>
+        <li>
+          <details open>
+            <summary>Food Safety</summary>
+            <ul>
+              <li><a>Alpha</a></li>
+              <li><a>Beta</a></li>
+              <li><a>Gamma</a></li>
+              <li><a>Delta</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details open>
+            <summary>Events</summary>
+            <ul>
+              <li><a>Alpha</a></li>
+              <li><a>Beta</a></li>
+              <li><a>Gamma</a></li>
+              <li><a>Delta</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a>Training</a></li>
       </ul>
     </nav>
   </div>

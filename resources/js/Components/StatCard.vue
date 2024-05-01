@@ -13,6 +13,7 @@ const props = defineProps<StatCardProps>();
   <div class="w-full shadow-xl p-4 rounded-xl border border-base-200">
     <div class="text-md leading-none">{{ title }}</div>
     <div class="text-sm text-base-300 leading-none">{{ description }}</div>
+    <div class="grow"><slot/></div>
   </div>
 </template>
 

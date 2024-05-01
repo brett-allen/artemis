@@ -7,15 +7,6 @@ html, body {
     height: 100vh;
 }
 
-input {
-  background-color: transparent;
-  border: 0px solid !important;
-}
-
-input:focus {
-  outline: 0 !important;
-}
-
 div#app {
     /* height: 100% ; */
     width: 100%;

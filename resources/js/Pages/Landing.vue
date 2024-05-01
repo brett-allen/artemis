@@ -16,9 +16,7 @@ console.log(props.users)
 
 </script>
 
-<style>
-
-</style>
+<style></style>
 
 <template>
 
@@ -39,9 +37,10 @@ console.log(props.users)
           <span class="text-4xl font-extrabold text-cream-can-500">99</span>
         </StatCard>
         <StatCard title="Alert 1" description="description of a thing">
-          <span class="text-4xl font-extrabold text-cream-can-500">99</span>
+         
         </StatCard>
       </div>
     </div>
+
   </SidebarLayout>
 </template>

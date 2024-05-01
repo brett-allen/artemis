@@ -1,93 +1,77 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3'
+import { reactive } from 'vue';
 
-
-
-const onShowHide = () => {
-    const sidebar = document.querySelector("#sidebar");
-    const glass = document.querySelector("#glass") as HTMLElement;
-    sidebar?.classList.toggle('-translate-x-full')
-    // const classes = ['bg-black/40', 'invisible'];
-    if (glass)
-        ['bg-black/40', 'invisible'].map(c => glass?.classList.toggle(c))
-
-}
+const state = reactive({
+  sideshow: false
+})
 
 </script>
 
 <template>
-    <!-- navbar -->
-    <div class="navbar fixed right-0 top-0 left-0 bg-base-100 shadow-lg z-50">
-        <div class="flex-none block xl:hidden">
-            <button class="btn btn-square btn-ghost" @click="() => onShowHide()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    class="inline-block w-5 h-5 stroke-current">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
-            </button>
-        </div>
-        <div class="flex-1">
-            <Link href="/" class="btn btn-ghost text-xl">SouperDup</Link>
-        </div>
-        <div class="flex-none">
-            <button class="btn btn-square btn-ghost">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    class="inline-block w-5 h-5 stroke-current">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z">
-                    </path>
-                </svg>
-            </button>
-        </div>
-    </div>
+  <!-- header -->
+  <div class="fixed navbar bg-shakespeare-500 shadow-xl mb-4 z-10">
+    <button class="btn btn-ghost btn-square text-white  xl:mr-56" @click="state.sideshow = !state.sideshow">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
 
-    <!-- side menu -->
-    <aside id="sidebar"
-        class="fixed flex flex-col items-start bottom-0 top-16 w-72 gap-y-5 -translate-x-full xl:translate-x-0 p-4 transition-all duration-300 ease-in-out delay-300 bg-base-100 z-10">
-        <header class="flex w-full h-36 justify-center items-center bg-cover rounded-box"
-            style="background-image: url('https://unsplash.com/photos/Yn0l7uwBrpw/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjg4NjE0MzkxfA&force=true&w=1920');">
-            <div
-                class="w-3/4 h-1/2 flex justify-center items-center p-8  border border-gray-400/50 rounded-xl bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10  shadow-lg ">
-                <span class="text-white font-semibold">Org Name Here</span>
-            </div>
-        </header>
-        <ul class="menu bg-base-200 w-full rounded-box">
-            <li>
-                <Link href="facilities">Facilities</Link>
-            </li>
-            <li>
-                <Link href="users">Users</Link>
-            </li>
-            <li>
-                <Link href="residents">Residents</Link>
-            </li>
-            <li>
+    <div class="flex-none gap-2">
+      <label class="input input-bordered flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+        <input type="text" class="grow " placeholder="Search" />
+      </label>
+    </div>
+    
+  </div>
+
+  <!-- sidebar -->
+  <div
+    class="bg-dark-grey text-white w-64 fixed inset-y-0 left-0 xl:translate-x-0 transform -translate-x-full transition duration-300 ease-in-out z-20"
+    :class="{ 'translate-x-0': state.sideshow }">
+    <div class="flex justify-center items-center gap-4 py-2"><img class="size-12 rotate-12 "
+        src="/images/su-digit.png"><span class="font-semibold text-2xl">SouperDup</span></div>
+
+    <nav class="flex flex-1 justify-center text-dark-grey py-4">
+      <ul class="menu w-56 bg-base-100 rounded-box">
+        <li><a>Item 1</a></li>
+        <li>
+          <details open>
+            <summary>Parent</summary>
+            <ul>
+              <li><a>Submenu 1</a></li>
+              <li><a>Submenu 2</a></li>
+              <li>
                 <details open>
-                    <summary>Catering</summary>
-                    <ul>
-                        <li>
-                            <Link href="catering">Menus</Link>
-                        </li>
-                        <li>
-                            <Link href="catering">Recipes</Link>
-                        </li>
-                    </ul>
+                  <summary>Parent</summary>
+                  <ul>
+                    <li><a>Submenu 1</a></li>
+                    <li><a>Submenu 2</a></li>
+                  </ul>
                 </details>
-            </li>
-            <li>
-                <Link href="survey">Surveys</Link>
-            </li>
-        </ul>
-    </aside>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li><a>Item 3</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    <!-- main body -->
-    <div class="relative flex xl:ml-[19rem] mt-20 m-4 h-[calc(100%-96px)] border-2 border-red-500 ">
-        <span class="absolute top-0 right-0 text-gray-300">Main Body</span>
-        <slot />
+  <div id="container" class="relative flex min-h-full pt-16">
+    <!-- glass -->
+    <div class="absolute inset-0 bg-black/40 z-10 transform duration-300 ease-in-out"
+      :class="{ 'block': state.sideshow, 'hidden': !state.sideshow }" @click="state.sideshow = !state.sideshow"></div>
+
+    <!-- Main Content -->
+    <div class="flex flex-col flex-1 xl:ml-64">
+      <slot />
     </div>
-
-
-    <div id="glass" class="fixed inset-0 top-16  invisible z-[1] transition-all duration-300 ease-in-out delay-300">
-    </div>
+  </div>
 </template>

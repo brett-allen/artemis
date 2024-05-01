@@ -3,6 +3,7 @@
 use App\Http\Controllers\CateringPageController;
 use App\Http\Controllers\FacilitiesPageController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\MenuPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResidentsPageController;
 use App\Http\Controllers\SurveyPageController;
@@ -18,6 +19,7 @@ Route::get('/users', [UsersPageController::class, 'view'])->name('users.view');
 Route::get('/residents', [ResidentsPageController::class, 'view'])->name('residents.view');
 Route::get('/catering', [CateringPageController::class, 'view'])->name('catering.view');
 Route::get('/survey', [SurveyPageController::class, 'view'])->name('survey.view');
+Route::get('/menus', [MenuPageController::class, 'view'])->name('menus.view');
 
 // the OG route set
 //

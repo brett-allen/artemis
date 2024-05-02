@@ -28,7 +28,13 @@ const state = reactive({
         <input type="text" class="grow" placeholder="Search" />
       </label>
     </div>
-    
+    <div class="flex-1"></div>
+    <div class="avatar placeholder">
+      <div class="bg-neutral text-neutral-content rounded-full w-12">
+        <span class="text-xl">BA</span>
+      </div>
+    </div>
+
   </div>
 
   <!-- sidebar -->

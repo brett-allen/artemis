@@ -23,21 +23,21 @@ console.log(props.users)
   <Head title="Landing" />
 
   <SidebarLayout>
-    <!-- xl: is the breakign point for ipad pro orientation change -->
+    <!-- xl: is the breaking point for ipad pro orientation change -->
     <div class="flex flex-1 ">
 
-      <div class="flex w-full min-h-40 max-h-40 h-40 p-4 space-x-4">
-        <StatCard title="Alert 0" description="description of a thing">
-          <span class="text-4xl font-extrabold text-cream-can-500">99</span>
+      <div class="flex w-full min-h-28 max-h-28 h-28 p-4 space-x-4">
+        <StatCard title="Food Waste" description="food waste is up">
+          <span class="text-4xl font-extrabold text-shakespeare-500">10 ↗︎</span>
         </StatCard>
-        <StatCard title="Alert 1" description="description of a thing">
-          <span class="text-4xl font-extrabold text-cream-can-500">99</span>
+        <StatCard title="Menu Satisfaction" description="peeps not happy ↘︎">
+          <span class="text-4xl font-extrabold text-shakespeare-500">20</span>
         </StatCard>
-        <StatCard title="Alert 1" description="description of a thing">
-          <span class="text-4xl font-extrabold text-cream-can-500">99</span>
+        <StatCard title="Current Menu" description="days until current menu ends rhubarb rhubarb rhubarb rhubarb rhubarb ↗︎">
+          <span class="text-4xl font-extrabold text-shakespeare-500">30</span>
         </StatCard>
-        <StatCard title="Alert 1" description="description of a thing">
-         
+        <StatCard title="Alert 1" description="description of a thing ↘︎">
+          <span class="text-4xl font-extrabold text-shakespeare-500 ">40</span>
         </StatCard>
       </div>
     </div>

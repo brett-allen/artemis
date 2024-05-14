@@ -2,12 +2,16 @@
 
 use App\Http\Controllers\CateringPageController;
 use App\Http\Controllers\FacilitiesPageController;
+use App\Http\Controllers\IngredientsPageController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MenuPageController;
+use App\Http\Controllers\MenusPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecipiesPageController;
 use App\Http\Controllers\ResidentsPageController;
 use App\Http\Controllers\SurveyPageController;
 use App\Http\Controllers\UsersPageController;
+use App\Http\Controllers\FoodSafetyPageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,6 +22,10 @@ Route::get('/facilities', [FacilitiesPageController::class, 'view'])->name('faci
 Route::get('/users', [UsersPageController::class, 'view'])->name('users.view');
 Route::get('/residents', [ResidentsPageController::class, 'view'])->name('residents.view');
 Route::get('/catering', [CateringPageController::class, 'view'])->name('catering.view');
+Route::get('/catering/ingredients', [IngredientsPageController::class, 'view'])->name('catering.ingredients.view');
+Route::get('/catering/recipies', [RecipiesPageController::class, 'view'])->name('catering.recipies.view');
+Route::get('/catering/menus', [MenusPageController::class, 'view'])->name('catering.menus.view');
+Route::get('/foodsafety/alpha', [FoodSafetyPageController::class, 'view'])->name('foodsafety.view');
 Route::get('/survey', [SurveyPageController::class, 'view'])->name('survey.view');
 Route::get('/menus', [MenuPageController::class, 'view'])->name('menus.view');
 

@@ -2,9 +2,16 @@
 import { Link } from '@inertiajs/vue3'
 import { reactive } from 'vue';
 
+
+const R = route
+
 const state = reactive({
   sideshow: false
 })
+
+// const props = defineProps<{
+
+// }>();
 
 </script>
 
@@ -18,17 +25,27 @@ const state = reactive({
       </svg>
     </button>
 
-    <div class="flex-none gap-2">
-      <label class="input input-bordered focus:outline-none flex items-center gap-2">
+    <!-- <div class="flex-1 justify-center">
+    </div> -->
+
+    <div class="relative group flex-1 flex-col gap-2 mx-4 w-full">
+      <label class="input input-bordered focus:outline-none flex items-center gap-2 w-full">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round"
             d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
         </svg>
-        <input type="text" class="grow" placeholder="Search" />
+        <input type="text" class="" placeholder="Soup'er Search" />
       </label>
+      <!-- <ul class="w-full h-40 absolute top-full border-2 border-red-500 mt-1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul> -->
     </div>
-    <div class="flex-1"></div>
+
     <div class="avatar placeholder">
       <div class="bg-neutral text-neutral-content rounded-full w-12">
         <span class="text-xl">BA</span>
@@ -39,30 +56,25 @@ const state = reactive({
 
   <!-- sidebar -->
   <div
-    class="bg-dark-grey text-white w-64 fixed inset-y-0 left-0 xl:translate-x-0 transform -translate-x-full transition duration-300 ease-in-out z-20"
+    class="flex flex-col flex-1 bg-dark-grey text-white w-64 fixed inset-y-0 left-0 xl:translate-x-0 transform -translate-x-full transition duration-300 ease-in-out z-20"
     :class="{ 'translate-x-0': state.sideshow }">
-    <div class="flex justify-center items-center gap-4 py-2"><img class="size-12 rotate-12 "
+    <div class="flex justify-center items-center gap-4 py-2 pt-4"><img class="size-12 rotate-12"
         src="/images/su-digit.png"><span class="font-semibold text-2xl">SouperDup</span></div>
 
     <nav class="flex flex-1 justify-center text-dark-grey py-4">
-      <ul class="menu w-56 bg-base-100 rounded-box">
-        <li><a>Catering</a></li>
+      <ul class="menu w-56 bg-base-100 rounded-box h-full">
         <li>
           <details open>
-            <summary>Budgets</summary>
+            <summary>Catering</summary>
             <ul>
-              <li><a>Alpha</a></li>
-              <li><a>Beta</a></li>
-              <li><a>Gamma</a></li>
-              <li><a>Delta</a></li>
+              <li :class="{ 'bg-pink-500': R.path === '/catering/ingredients' }">
+                <Link href="/catering/ingredients">Ingredients</Link>
+              </li>
               <li>
-                <details>
-                  <summary>Sub-Budgets</summary>
-                  <ul>
-                    <li><a>Epsilon</a></li>
-                    <li><a>Zeta</a></li>
-                  </ul>
-                </details>
+                <Link href="/catering/recipies">Recipies</Link>
+              </li>
+              <li>
+                <Link href="/catering/menus">Menus</Link>
               </li>
             </ul>
           </details>
@@ -71,18 +83,7 @@ const state = reactive({
           <details open>
             <summary>Food Safety</summary>
             <ul>
-              <li><a>Alpha</a></li>
-              <li><a>Beta</a></li>
-              <li><a>Gamma</a></li>
-              <li><a>Delta</a></li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <details open>
-            <summary>Events</summary>
-            <ul>
-              <li><a>Alpha</a></li>
+              <li><a> <Link href="/foodsafety/alpha">Alpha</Link></a></li>
               <li><a>Beta</a></li>
               <li><a>Gamma</a></li>
               <li><a>Delta</a></li>
